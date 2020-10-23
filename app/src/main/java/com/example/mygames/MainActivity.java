@@ -1,0 +1,125 @@
+package com.example.mygames;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    ArrayList<MyItem> myItems;
+    MyListAdapter myAdapter;
+    View view;
+    Resources res = getResources();
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.listview);
+//        String tag = (String)view.getTag();
+//
+//        int id_picture = res.getIdentifier("title"+tag, "string", getPackageName());
+//        String picture = res.getString(id_picture).toString();
+//
+//        int id_img = res.getIdentifier(picture, "drawable", getPackageName());
+//
+//        myItems = new ArrayList<>();
+//        myItems.add(new MyItem(R.drawable.line, "title"+tag, "ex"+tag));
+//        myItems.add(new MyItem(R.drawable.ball, "title"+tag, "ex"+tag));
+//
+//        myAdapter = new MyListAdapter(this, R.layout.activity_main, myItems);
+//
+//        ListView list = (ListView)findViewById(R.id.list);
+//        list.setAdapter(myAdapter);
+        myItems = new ArrayList<>();
+        myItems.add(new MyItem(R.drawable.line, "자유 곡선", "터치를 입력받아 자유 곡선을 그리기"));
+        myItems.add(new MyItem(R.drawable.ball, "공 움직이기", "키 A(왼쪽), D(오른쪽), W(위쪽), S(아래쪽)를 입력받아 공 움직이기"));
+
+        myAdapter = new MyListAdapter(this, R.layout.activity_main, myItems);
+
+        ListView list = (ListView)findViewById(R.id.list);
+        list.setAdapter(myAdapter);
+    }
+}
+
+class MyItem {
+    int mIcon;
+    String mName;
+    String mDes;
+
+    public MyItem(int mIcon, String mName, String mDes) {
+        this.mIcon = mIcon;
+        this.mName = mName;
+        this.mDes = mDes;
+    }
+}
+
+class  MyListAdapter extends BaseAdapter {
+    Intent intent;
+    Context mContext;
+    int mLayout;
+    ArrayList<MyItem> mDatas;
+    LayoutInflater mInflater;
+
+    public MyListAdapter(Context context, int layout, ArrayList<MyItem> datas) {
+        this.mContext = context;
+        this.mLayout = layout;
+        this.mDatas = datas;
+        this.mInflater = LayoutInflater.from(context);
+    }
+
+    @Override
+    public  int getCount() {
+        return  mDatas.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mDatas.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = mInflater.inflate(mLayout, parent, false);
+        }
+
+        ImageView img = (ImageView)convertView.findViewById(R.id.img01);
+        img.setImageResource(mDatas.get(position).mIcon);
+
+        TextView txt = (TextView)convertView.findViewById(R.id.text01);
+        txt.setText(mDatas.get(position).mName);
+
+        TextView txt2 = (TextView)convertView.findViewById(R.id.desc01);
+        txt2.setText(mDatas.get(position).mDes);
+
+        Button btn = (Button)convertView.findViewById(R.id.btn01);
+        btn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = mDatas.get(position).mName + "를 주문합니다";
+                Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return convertView;
+    }
+}
