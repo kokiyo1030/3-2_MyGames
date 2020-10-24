@@ -73,7 +73,6 @@ class MyItem {
 }
 
 class  MyListAdapter extends BaseAdapter {
-    Intent intent;
     Context mContext;
     int mLayout;
     ArrayList<MyItem> mDatas;
