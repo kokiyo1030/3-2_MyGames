@@ -101,7 +101,10 @@ class  MyListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        final Context context = parent.getContext();
+
         if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(mLayout, parent, false);
         }
 
@@ -120,6 +123,7 @@ class  MyListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), FreeLine.class);
                 mContext.startActivity(intent);
+                Toast.makeText(context, "그림을 그리세요", Toast.LENGTH_SHORT).show();
             }
         });
 
