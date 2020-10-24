@@ -1,6 +1,7 @@
 package com.example.mygames;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ComponentName;
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
         ListView list = (ListView)findViewById(R.id.list);
         list.setAdapter(myAdapter);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle("My Games");
+        ab.setDisplayShowHomeEnabled(true);
     }
 }
 
@@ -112,11 +117,11 @@ class  MyListAdapter extends BaseAdapter {
         txt2.setText(mDatas.get(position).mDes);
 
         Button btn = (Button)convertView.findViewById(R.id.btn01);
-        btn.setOnClickListener(new Button.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = mDatas.get(position).mName + "를 주문합니다";
-                Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), FreeLine.class);
+                mContext.startActivity(intent);
             }
         });
 
