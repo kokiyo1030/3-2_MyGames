@@ -24,12 +24,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ArrayList<MyItem> myItems;
     MyListAdapter myAdapter;
-    View view;
-    Resources res = getResources();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
+        setTitle("Game List");
 //        String tag = (String)view.getTag();
 //
 //        int id_picture = res.getIdentifier("title"+tag, "string", getPackageName());
@@ -54,21 +53,21 @@ public class MainActivity extends AppCompatActivity {
         ListView list = (ListView)findViewById(R.id.list);
         list.setAdapter(myAdapter);
 
-        ActionBar ab = getSupportActionBar();
-        ab.setTitle("My Games");
-        ab.setDisplayShowHomeEnabled(true);
+//        ActionBar ab = getSupportActionBar();
+//        ab.setTitle("My Games");
+//        ab.setDisplayShowHomeEnabled(true);
     }
 }
 
 class MyItem {
-    int mIcon;
-    String mName;
-    String mDes;
+    int Img;
+    String Name;
+    String Des;
 
-    public MyItem(int mIcon, String mName, String mDes) {
-        this.mIcon = mIcon;
-        this.mName = mName;
-        this.mDes = mDes;
+    public MyItem(int Img, String Name, String Des) {
+        this.Img = Img;
+        this.Name = Name;
+        this.Des = Des;
     }
 }
 
@@ -107,13 +106,13 @@ class  MyListAdapter extends BaseAdapter {
         }
 
         ImageView img = (ImageView)convertView.findViewById(R.id.img01);
-        img.setImageResource(mDatas.get(position).mIcon);
+        img.setImageResource(mDatas.get(position).Img);
 
         TextView txt = (TextView)convertView.findViewById(R.id.text01);
-        txt.setText(mDatas.get(position).mName);
+        txt.setText(mDatas.get(position).Name);
 
         TextView txt2 = (TextView)convertView.findViewById(R.id.desc01);
-        txt2.setText(mDatas.get(position).mDes);
+        txt2.setText(mDatas.get(position).Des);
 
         Button btn = (Button)convertView.findViewById(R.id.btn01);
         btn.setOnClickListener(new View.OnClickListener() {
