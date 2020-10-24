@@ -108,16 +108,16 @@ class  MyListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(mLayout, parent, false);
         }
 
-        ImageView img = (ImageView)convertView.findViewById(R.id.img01);
+        ImageView img = (ImageView)convertView.findViewById(R.id.img);
         img.setImageResource(mDatas.get(position).Img);
 
-        TextView txt = (TextView)convertView.findViewById(R.id.text01);
+        TextView txt = (TextView)convertView.findViewById(R.id.text);
         txt.setText(mDatas.get(position).Name);
 
-        TextView txt2 = (TextView)convertView.findViewById(R.id.desc01);
+        TextView txt2 = (TextView)convertView.findViewById(R.id.desc);
         txt2.setText(mDatas.get(position).Des);
 
-        Button btn = (Button)convertView.findViewById(R.id.btn01);
+        Button btn = (Button)convertView.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +126,6 @@ class  MyListAdapter extends BaseAdapter {
                 Toast.makeText(context, "그림을 그리세요", Toast.LENGTH_SHORT).show();
             }
         });
-
         return convertView;
     }
 }

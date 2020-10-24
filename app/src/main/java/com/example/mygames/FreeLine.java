@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -25,6 +26,10 @@ public class FreeLine extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         vw = new MyView(this);
         setContentView(vw);
+
+        LinearLayout contents = (LinearLayout)findViewById(R.id.exit);
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.exit, contents, true);
 
 //        LinearLayout linear = new LinearLayout(this);
 //        linear.setOrientation(LinearLayout.VERTICAL);

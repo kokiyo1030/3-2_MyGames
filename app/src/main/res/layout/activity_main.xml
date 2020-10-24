@@ -4,32 +4,32 @@
     android:orientation="vertical"
     android:paddingTop="5dp">
     <ImageView
-        android:id="@+id/img01"
+        android:id="@+id/img"
         android:layout_width="134dp"
         android:layout_height="193dp"/>
     <TextView
-        android:id="@+id/text01"
+        android:id="@+id/text"
         android:tag="01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:textSize="24sp"
         android:paddingTop="5dp"
-        android:layout_toEndOf="@+id/img01"/>
+        android:layout_toEndOf="@+id/img"/>
     <TextView
-        android:id="@+id/desc01"
+        android:id="@+id/desc"
         android:tag="02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text01"
+        android:layout_below="@+id/text"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/img01"/>
+        android:layout_toEndOf="@+id/img"/>
     <Button
-        android:id="@+id/btn01"
+        android:id="@+id/btn"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_toEndOf="@+id/text01"
+        android:layout_toEndOf="@+id/text"
         android:text="@string/button" />
 </RelativeLayout>
