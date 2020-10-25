@@ -5,10 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,12 +21,26 @@ public class FreeLine extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        RelativeLayout relParent = new RelativeLayout(this);
+//        RelativeLayout.LayoutParams relParentParam = new RelativeLayout.LayoutParams(
+//                RelativeLayout.LayoutParams.MATCH_PARENT,
+//                RelativeLayout.LayoutParams.MATCH_PARENT
+//        );
+//        relParent.setLayoutParams(relParentParam);
+//
+//        Button button = new Button(this);
+//        RelativeLayout.LayoutParams buttonParams = new RelativeLayout.LayoutParams(
+//                RelativeLayout.LayoutParams.MATCH_PARENT,
+//                RelativeLayout.LayoutParams.WRAP_CONTENT
+//        );
+//        button.setLayoutParams(buttonParams);
+//        button.setText(R.string.exit);
+//
+//        relParent.addView(button);
+
         vw = new MyView(this);
         setContentView(vw);
-
-        LinearLayout contents = (LinearLayout)findViewById(R.id.exit);
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.exit, contents, true);
 
         arVertex = new ArrayList<Vertex>();
     }
