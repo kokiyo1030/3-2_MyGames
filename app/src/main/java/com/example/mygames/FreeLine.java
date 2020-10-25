@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,30 +31,6 @@ public class FreeLine extends AppCompatActivity {
         LinearLayout contents = (LinearLayout)findViewById(R.id.exit);
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.exit, contents, true);
-
-//        LinearLayout linear = new LinearLayout(this);
-//        linear.setOrientation(LinearLayout.VERTICAL);
-//        LinearLayout.LayoutParams params =
-//                new LinearLayout.LayoutParams(
-//                        LinearLayout.LayoutParams.MATCH_PARENT,
-//                        LinearLayout.LayoutParams.MATCH_PARENT);
-//        linear.setLayoutParams(params);
-//
-//        LinearLayout.LayoutParams params2 =
-//                new LinearLayout.LayoutParams(
-//                        LinearLayout.LayoutParams.WRAP_CONTENT,
-//                        LinearLayout.LayoutParams.WRAP_CONTENT);
-//
-//        Button button = new Button(this);
-//        button.setLayoutParams(params2);
-//        button.setText(R.string.exit);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(), MainActivity.class);
-//            }
-//        });
-//        linear.addView(button);
 
         arVertex = new ArrayList<Vertex>();
     }

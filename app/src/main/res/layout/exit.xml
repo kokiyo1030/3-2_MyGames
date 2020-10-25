@@ -12,7 +12,14 @@
         android:layout_height="wrap_content"
         android:text="@string/exit" />
 
-<!--    <fragment-->
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <!--    <fragment-->
 <!--        android:id="@+id/fragment"-->
 <!--        class="com.example.mygames.FreeLine"-->
 <!--        android:layout_width="match_parent"-->

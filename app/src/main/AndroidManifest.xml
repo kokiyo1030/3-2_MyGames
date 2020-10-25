@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FreeLine" android:label="@string/title01"></activity>
+        <activity android:name=".MoveCircle" android:label="@string/title02"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
