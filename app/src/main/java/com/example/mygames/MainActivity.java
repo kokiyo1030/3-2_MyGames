@@ -89,7 +89,7 @@ class  MyListAdapter extends BaseAdapter {
         ImageView img = (ImageView)convertView.findViewById(R.id.img);
         img.setImageResource(mDatas.get(position).Img);
 
-        TextView txt = (TextView)convertView.findViewById(R.id.text);
+        final TextView txt = (TextView)convertView.findViewById(R.id.text);
         txt.setText(mDatas.get(position).Name);
 
         TextView txt2 = (TextView)convertView.findViewById(R.id.desc);
@@ -99,11 +99,19 @@ class  MyListAdapter extends BaseAdapter {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent FreeLineIntent = new Intent(v.getContext(), FreeLine.class);
-                mContext.startActivity(FreeLineIntent);
-                Toast.makeText(context, R.string.toast1, Toast.LENGTH_SHORT).show();
-//                Intent MoveCircleIntent = new Intent(v.getContext(), MoveCircle.class);
-//                mContext.startActivity(MoveCircleIntent);
+                String txtTitle = txt.getText().toString();
+                switch (txtTitle) {
+                    case "자유 곡선":
+                        Intent FreeLineIntent = new Intent(v.getContext(), FreeLine.class);
+                        mContext.startActivity(FreeLineIntent);
+                        Toast.makeText(context, R.string.toast1, Toast.LENGTH_SHORT).show();
+                        break;
+                    case "공 움직이기":
+                        Intent MoveCircleIntent = new Intent(v.getContext(), MoveCircle.class);
+                        mContext.startActivity(MoveCircleIntent);
+                        Toast.makeText(context, R.string.toast2, Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         });
         return convertView;
