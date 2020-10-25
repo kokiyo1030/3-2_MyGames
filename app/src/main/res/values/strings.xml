@@ -6,4 +6,6 @@
     <string name="desc02">키 A(왼쪽), D(오른쪽), W(위쪽), S(아래쪽)를 입력받아 공 움직이기</string>
     <string name="button">시작</string>
     <string name="exit">종료</string>
+    <string name="toast1">그림을 그리세요</string>
+    <string name="toast2">key A,D,W,S을 누르세요</string>
 </resources>

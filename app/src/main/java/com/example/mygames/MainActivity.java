@@ -1,13 +1,10 @@
 package com.example.mygames;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,6 +101,7 @@ class  MyListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent FreeLineIntent = new Intent(v.getContext(), FreeLine.class);
                 mContext.startActivity(FreeLineIntent);
+                Toast.makeText(context, R.string.toast1, Toast.LENGTH_SHORT).show();
 //                Intent MoveCircleIntent = new Intent(v.getContext(), MoveCircle.class);
 //                mContext.startActivity(MoveCircleIntent);
             }
