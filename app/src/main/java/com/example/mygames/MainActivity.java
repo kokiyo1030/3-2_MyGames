@@ -121,9 +121,13 @@ class  MyListAdapter extends BaseAdapter {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), FreeLine.class);
-                mContext.startActivity(intent);
-                Toast.makeText(context, "그림을 그리세요", Toast.LENGTH_SHORT).show();
+                String sText = ((TextView) v).getText().toString();
+                if(sText.equals("시작")) {
+                    Intent intent = new Intent(v.getContext(), FreeLine.class);
+                    mContext.startActivity(intent);
+                } else {
+                    Toast.makeText(context, "그림을 그리세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return convertView;
