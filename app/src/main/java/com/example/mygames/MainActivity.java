@@ -29,21 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
         setTitle("Game List");
-//        String tag = (String)view.getTag();
-//
-//        int id_picture = res.getIdentifier("title"+tag, "string", getPackageName());
-//        String picture = res.getString(id_picture).toString();
-//
-//        int id_img = res.getIdentifier(picture, "drawable", getPackageName());
-//
-//        myItems = new ArrayList<>();
-//        myItems.add(new MyItem(R.drawable.line, "title"+tag, "ex"+tag));
-//        myItems.add(new MyItem(R.drawable.ball, "title"+tag, "ex"+tag));
-//
-//        myAdapter = new MyListAdapter(this, R.layout.activity_main, myItems);
-//
-//        ListView list = (ListView)findViewById(R.id.list);
-//        list.setAdapter(myAdapter);
         myItems = new ArrayList<>();
         myItems.add(new MyItem(R.drawable.line, "자유 곡선", "터치를 입력받아 자유 곡선을 그리기"));
         myItems.add(new MyItem(R.drawable.ball, "공 움직이기", "키 A(왼쪽), D(오른쪽), W(위쪽), S(아래쪽)를 입력받아 공 움직이기"));
@@ -52,10 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         ListView list = (ListView)findViewById(R.id.list);
         list.setAdapter(myAdapter);
-
-//        ActionBar ab = getSupportActionBar();
-//        ab.setTitle("My Games");
-//        ab.setDisplayShowHomeEnabled(true);
     }
 }
 
@@ -121,11 +102,12 @@ class  MyListAdapter extends BaseAdapter {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sText = ((TextView) v).getText().toString();
-                if(sText.equals("시작")) {
+                String sTag = ((TextView) v).getTag().toString();
+                if(sTag.equals("시작")) {
                     Intent intent = new Intent(v.getContext(), FreeLine.class);
                     mContext.startActivity(intent);
                 } else {
+                    Intent intent2 = new Intent(v.getContext(), MoveCircle.class);
                     Toast.makeText(context, "그림을 그리세요", Toast.LENGTH_SHORT).show();
                 }
             }
