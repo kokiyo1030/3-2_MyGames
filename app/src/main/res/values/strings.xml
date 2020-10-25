@@ -2,8 +2,8 @@
     <string name="app_name">My Games</string>
     <string name="title01">자유 곡선</string>
     <string name="title02">공 움직이기</string>
-    <string name="ex01">터치를 입력받아 자유 곡선을 그리기</string>
-    <string name="ex02">키 A(왼쪽), D(오른쪽), W(위쪽), S(아래쪽)를 입력받아 공 움직이기</string>
+    <string name="desc01">터치를 입력받아 자유 곡선을 그리기</string>
+    <string name="desc02">키 A(왼쪽), D(오른쪽), W(위쪽), S(아래쪽)를 입력받아 공 움직이기</string>
     <string name="button">시작</string>
     <string name="exit">종료</string>
 </resources>

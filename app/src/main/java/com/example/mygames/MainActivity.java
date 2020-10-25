@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.listview);
         setTitle("Game List");
         myItems = new ArrayList<>();
-        myItems.add(new MyItem(R.drawable.line, "자유 곡선", "터치를 입력받아 자유 곡선을 그리기"));
-        myItems.add(new MyItem(R.drawable.ball, "공 움직이기", "키 A(왼쪽), D(오른쪽), W(위쪽), S(아래쪽)를 입력받아 공 움직이기"));
+        myItems.add(new MyItem(R.drawable.line, R.string.title01, R.string.desc01));
+        myItems.add(new MyItem(R.drawable.ball, R.string.title02, R.string.desc02));
 
         myAdapter = new MyListAdapter(this, R.layout.activity_main, myItems);
 
@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
 class MyItem {
     int Img;
-    String Name;
-    String Des;
+    int Name;
+    int Des;
 
-    public MyItem(int Img, String Name, String Des) {
+    public MyItem(int Img, int Name, int Des) {
         this.Img = Img;
         this.Name = Name;
         this.Des = Des;
@@ -102,14 +102,10 @@ class  MyListAdapter extends BaseAdapter {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sTag = ((TextView) v).getTag().toString();
-                if(sTag.equals("시작")) {
-                    Intent intent = new Intent(v.getContext(), FreeLine.class);
-                    mContext.startActivity(intent);
-                } else {
-                    Intent intent2 = new Intent(v.getContext(), MoveCircle.class);
-                    Toast.makeText(context, "그림을 그리세요", Toast.LENGTH_SHORT).show();
-                }
+                Intent FreeLineIntent = new Intent(v.getContext(), FreeLine.class);
+                mContext.startActivity(FreeLineIntent);
+//                Intent MoveCircleIntent = new Intent(v.getContext(), MoveCircle.class);
+//                mContext.startActivity(MoveCircleIntent);
             }
         });
         return convertView;
