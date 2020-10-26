@@ -17,14 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class FreeLine extends AppCompatActivity {
-    private MyView vw;
+    private MyView paint;
     ArrayList<Vertex> arVertex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vw = new MyView(this);
-        setContentView(vw);
+        paint = new MyView(this);
+        setContentView(paint);
 
         arVertex = new ArrayList<Vertex>();
     }
@@ -46,7 +46,6 @@ public class FreeLine extends AppCompatActivity {
         public MyView(Context context) {
             super(context);
 
-            // Paint 객체 미리 초기화
             mPaint = new Paint();
             mPaint.setColor(Color.BLACK);
             mPaint.setStrokeWidth(3);
@@ -56,7 +55,6 @@ public class FreeLine extends AppCompatActivity {
         public void onDraw(Canvas canvas) {
             canvas.drawColor(Color.LTGRAY);
 
-            // 정점을 순회하면서 선분으로 잇는다.
             for (int i=0;i<arVertex.size();i++) {
                 if (arVertex.get(i).draw) {
                     canvas.drawLine(arVertex.get(i-1).x, arVertex.get(i-1).y,
@@ -65,7 +63,6 @@ public class FreeLine extends AppCompatActivity {
             }
         }
 
-        // 터치 이동 시마다 정점을 추가한다.
         public boolean onTouchEvent(MotionEvent event) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 arVertex.add(new Vertex(event.getX(), event.getY(), false));
