@@ -19,32 +19,32 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<MyItem> myItems;
+    ArrayList<MyGame> myGames;
     MyListAdapter myAdapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
         setTitle("Game List");
-        myItems = new ArrayList<>();
-        myItems.add(new MyItem(R.drawable.line, R.string.title01, R.string.desc01));
-        myItems.add(new MyItem(R.drawable.ball, R.string.title02, R.string.desc02));
+        myGames = new ArrayList<>();
+        myGames.add(new MyGame(R.drawable.line, R.string.title01, R.string.desc01));
+        myGames.add(new MyGame(R.drawable.ball, R.string.title02, R.string.desc02));
 
-        myAdapter = new MyListAdapter(this, R.layout.activity_main, myItems);
+        myAdapter = new MyListAdapter(this, R.layout.activity_main, myGames);
 
         ListView list = (ListView)findViewById(R.id.list);
         list.setAdapter(myAdapter);
     }
 }
 
-class MyItem {
+class MyGame {
     int Img;
-    int Name;
+    int Title;
     int Des;
 
-    public MyItem(int Img, int Name, int Des) {
+    public MyGame(int Img, int Title, int Des) {
         this.Img = Img;
-        this.Name = Name;
+        this.Title = Title;
         this.Des = Des;
     }
 }
@@ -52,10 +52,10 @@ class MyItem {
 class  MyListAdapter extends BaseAdapter {
     Context mContext;
     int mLayout;
-    ArrayList<MyItem> mDatas;
+    ArrayList<MyGame> mDatas;
     LayoutInflater mInflater;
 
-    public MyListAdapter(Context context, int layout, ArrayList<MyItem> datas) {
+    public MyListAdapter(Context context, int layout, ArrayList<MyGame> datas) {
         this.mContext = context;
         this.mLayout = layout;
         this.mDatas = datas;
@@ -87,15 +87,13 @@ class  MyListAdapter extends BaseAdapter {
         }
 
         ImageView img = (ImageView)convertView.findViewById(R.id.img);
-        img.setImageResource(mDatas.get(position).Img);
-
         final TextView txt = (TextView)convertView.findViewById(R.id.text);
-        txt.setText(mDatas.get(position).Name);
-
         TextView txt2 = (TextView)convertView.findViewById(R.id.desc);
-        txt2.setText(mDatas.get(position).Des);
-
         Button btn = (Button)convertView.findViewById(R.id.btn);
+
+        img.setImageResource(mDatas.get(position).Img);
+        txt.setText(mDatas.get(position).Title);
+        txt2.setText(mDatas.get(position).Des);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
