@@ -7,18 +7,25 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MoveCircle extends AppCompatActivity {
-    private MyView vw;
+    private MyView move;
+    Button exitButton;
+    LinearLayout linearLayout;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vw = new MyView(this);
-        vw.setFocusable(true);
-        vw.setFocusableInTouchMode(true);
-        setContentView(vw);
+        linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        move = new MyView(this);
+        move.setFocusable(true);
+        move.setFocusableInTouchMode(true);
+        linearLayout.addView(move);
+        setContentView(linearLayout);
     }
 
     protected class MyView extends View {
@@ -30,6 +37,21 @@ public class MoveCircle extends AppCompatActivity {
             mX = 100;
             mY = 100;
             mColor = Color.BLUE;
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            exitButton = new Button(context);
+            exitButton.setText(R.string.exit);
+            exitButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            linearLayout.addView(exitButton, layoutParams);
         }
 
         public void onDraw(Canvas canvas) {

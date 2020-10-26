@@ -15,16 +15,22 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class FreeLine extends AppCompatActivity {
     private MyView paint;
     ArrayList<Vertex> arVertex;
+    Button exitButton;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
         paint = new MyView(this);
-        setContentView(paint);
+        linearLayout.addView(paint);
+        setContentView(linearLayout);
 
         arVertex = new ArrayList<Vertex>();
     }
@@ -50,6 +56,21 @@ public class FreeLine extends AppCompatActivity {
             mPaint.setColor(Color.BLACK);
             mPaint.setStrokeWidth(3);
             mPaint.setAntiAlias(true);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+
+            exitButton = new Button(context);
+            exitButton.setText(R.string.exit);
+            exitButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            linearLayout.addView(exitButton, layoutParams);
         }
 
         public void onDraw(Canvas canvas) {
