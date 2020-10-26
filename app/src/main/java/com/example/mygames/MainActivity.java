@@ -87,17 +87,17 @@ class  MyListAdapter extends BaseAdapter {
         }
 
         ImageView img = (ImageView)convertView.findViewById(R.id.img);
-        final TextView txt = (TextView)convertView.findViewById(R.id.text);
-        TextView txt2 = (TextView)convertView.findViewById(R.id.desc);
-        Button btn = (Button)convertView.findViewById(R.id.btn);
+        final TextView title = (TextView)convertView.findViewById(R.id.title);
+        TextView desc = (TextView)convertView.findViewById(R.id.desc);
+        Button startBtn = (Button)convertView.findViewById(R.id.startBtn);
 
         img.setImageResource(mDatas.get(position).Img);
-        txt.setText(mDatas.get(position).Title);
-        txt2.setText(mDatas.get(position).Des);
-        btn.setOnClickListener(new View.OnClickListener() {
+        title.setText(mDatas.get(position).Title);
+        desc.setText(mDatas.get(position).Des);
+        startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtTitle = txt.getText().toString();
+                String txtTitle = title.getText().toString();
                 switch (txtTitle) {
                     case "자유 곡선":
                         Intent FreeLineIntent = new Intent(v.getContext(), FreeLine.class);
