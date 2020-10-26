@@ -51,6 +51,7 @@ public class MoveCircle extends AppCompatActivity {
                     finish();
                 }
             });
+            exitButton.setFocusable(false);
             linearLayout.addView(exitButton, layoutParams);
         }
 
